@@ -1,0 +1,35 @@
+<div>
+  <table class="housekeepers-table">
+    <thead>
+      <tr>
+        <th>Request ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Requests</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.reqid }}</td>
+        <td>{{ request.date }}</td>
+        <td>{{ request.timings }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let req of request.reqs">{{ req }}</li>
+          </ul>
+        </td>
+        <td>{{ request.status }}</td>
+        <td>
+          <button *ngIf="request.status === 'Created'" (click)="allocateHousekeeperToRequest(request.reqid)">
+            Allocate
+          </button>
+          <button *ngIf="request.status === 'Allocated'" (click)="completeRequest(request.reqid)">
+            Complete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
