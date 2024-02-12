@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestComponent } from './request.component';
+import { StatusComponent } from './status.component';
 
-describe('RequestComponent', () => {
-  let component: RequestComponent;
-  let fixture: ComponentFixture<RequestComponent>;
+describe('StatusComponent', () => {
+  let component: StatusComponent;
+  let fixture: ComponentFixture<StatusComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RequestComponent]
+      declarations: [StatusComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RequestComponent);
+    fixture = TestBed.createComponent(StatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
