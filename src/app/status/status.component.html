@@ -1,0 +1,38 @@
+<div>
+  <table class="request-table">
+    <thead>
+      <tr>
+        <th>Request ID</th>
+        <th>Date</th>
+        <th>Timings</th>
+        <th>Requests</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of currentRecords">
+        <td>{{ request.reqid }}</td>
+        <td>{{ request.date }}</td>
+        <td>{{ request.timings }}</td>
+        <td>
+          <ul class="p-0">
+            <li *ngFor="let req of request.reqs">{{ req }}</li>
+          </ul>
+        </td>
+        <td [ngClass]="{
+          'text-primary': request.status === 'Allocated',
+          'text-success': request.status === 'Completed',
+          'text-default': request.status !== 'Allocated' && request.status !== 'Completed'
+        }">{{ request.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <ul *ngIf="requests.length > recordsPerPage">
+      <li *ngIf="currentPage > 1" (click)="handlePageChange(currentPage - 1)">&laquo; Prev</li>
+      <li *ngFor="let page of totalPagesArray()" (click)="handlePageChange(page)"
+        [class.active]="currentPage === page">{{ page }}</li>
+      <li *ngIf="currentPage !== totalPages" (click)="handlePageChange(currentPage + 1)">Next &raquo;</li>
+    </ul>
+  </div>
+</div>
